@@ -12,3 +12,5 @@ regression-model==1.0.0
 
 # Deployment
 gunicorn==19.9.0
+
+-e "C:\machine_learning\model_deployement\deploying-machine-learning-models\packages\regression_model"
