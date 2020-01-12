@@ -91,7 +91,7 @@ jobs:
       - run:
           name: Deploy to Heroku
           command: |
-            git push https://heroku:d4d8a495-d17e-4717-be2a-98d90b2f84e0@git.heroku.com/ai-ml-api.git master
+            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
 workflows:
   version: 2
   test-all:
