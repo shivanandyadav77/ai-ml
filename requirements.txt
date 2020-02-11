@@ -1,1 +1,31 @@
 -r packages/ml_api/requirements.txt
+
+
+rom pyspark.sql.types import StructType, StructField, IntegerType, StringType
+
+schema = StructType([
+    StructField("k", StringType(), True), StructField("v", IntegerType(), False)
+])
+
+# or df = sc.parallelize([]).toDF(schema)
+
+# Spark < 2.0 
+# sqlContext.createDataFrame([], schema)
+df = spark.createDataFrame([], schema)
+
+
+
+
+Here is a solution that creates an empty dataframe in pyspark 2.0.0 or more.
+
+from pyspark.sql import SQLContext
+sc = spark.sparkContext
+schema = StructType([StructField('col1', StringType(),False),StructField('col2', IntegerType(), True)])
+sqlContext.createDataFrame(sc.emptyRDD(), schema)
+
+
+
+
+As of Spark 2.4.3
+
+val df = SparkSession.builder().getOrCreate().emptyDataFrame
